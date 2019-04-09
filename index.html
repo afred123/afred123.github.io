@@ -84,41 +84,41 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="find"><a href="#find" class="headerlink" title="find"></a>find</h1><p>​    1、查找目录下面大于100M的文件：</p>
-<p>​        find / -type f -size +100M</p>
-<p>​    2、删除目录下面大于100M的文件：</p>
-<p>​        find / -type f -size +100M -delete</p>
-<p>​    3、显示目录下面大于100M的文件具体大小：</p>
-<p>​        find / -type f -size +100M -exec ls -hl {} \;</p>
-<p>​    4、显示7天内被访问的文件：</p>
-<p>​        find / -type f -atime -7</p>
-<h1 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h1><p>​     该命令把从stdin接收到的数据重新格式化，再将其作为参数提供给其他命令。</p>
-<p>​    1、显示目录下面大于100M的文件具体大小：</p>
-<p>​        find / -type f -size +100M | xargs ls -hl</p>
-<h1 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h1><p>​     tr可以对来自标准输入的内容进行字符替换、字符删除以及重复字符压缩。</p>
-<p>​     1、转换，小写改大写，将一个集合映射成另外一个集合：</p>
-<p>​        echo “heLLo World!” | tr ‘a-z’ ‘A-Z’</p>
-<p>​    2、删除集合数据，删除数字：</p>
-<p>​        echo “hello 123 world 567!” | tr -d ‘0-9’</p>
-<p>​    3、取补集，留下空格和数字、换行：</p>
-<p>​        echo “hello 123 world 567!” | tr -d -c ‘0-9 \n’</p>
-<p>​    4、压缩空格和数字：</p>
-<p>​        echo “hello    1233334  world!” | tr -s ‘ 0-9’</p>
-<h1 id="chattr"><a href="#chattr" class="headerlink" title="chattr"></a>chattr</h1><p>​    能够将文件设置成不可修改。</p>
-<p>​    1、设置文件不可修改:</p>
-<p>​        chattr +i file</p>
-<p>​    2、去除文件不可修改属性</p>
-<p>​         chattr -i file</p>
-<h1 id="diff、patch"><a href="#diff、patch" class="headerlink" title="diff、patch"></a>diff、patch</h1><p>​    1、打patch:</p>
-<p>​        diff -u file1 file2 &gt; patch.patch</p>
-<p>​    2、patch还原：</p>
-<p>​        patch -p1 file2 &lt; patch.patch</p>
-<h1 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h1><p>​    1、命名别名:</p>
-<p>​        alias new_command=’command sequence’</p>
-<p>​    2、把别名初始化有效</p>
-<p>​         echo ‘’ &gt;&gt; ~/.bashrc</p>
-<p>​        source ~/.bashrc</p>
-<h1 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h1><pre><code>1、在文件下搜索字段：
+        <h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><pre><code>1、查找目录下面大于100M的文件：
+    find / -type f -size +100M
+2、删除目录下面大于100M的文件：
+    find / -type f -size +100M -delete
+3、显示目录下面大于100M的文件具体大小：
+    find / -type f -size +100M -exec ls -hl {} \;
+4、显示7天内被访问的文件：
+    find / -type f -atime -7
+</code></pre><h3 id="xargs"><a href="#xargs" class="headerlink" title="xargs"></a>xargs</h3><pre><code>该命令把从stdin接收到的数据重新格式化，再将其作为参数提供给其他命令。
+1、显示目录下面大于100M的文件具体大小：
+    find / -type f -size +100M | xargs ls -hl
+</code></pre><h3 id="tr"><a href="#tr" class="headerlink" title="tr"></a>tr</h3><pre><code>tr可以对来自标准输入的内容进行字符替换、字符删除以及重复字符压缩。
+1、转换，小写改大写，将一个集合映射成另外一个集合：
+    echo &quot;heLLo World!&quot; | tr &apos;a-z&apos; &apos;A-Z&apos;
+2、删除集合数据，删除数字：
+    echo &quot;hello 123 world 567!&quot; | tr -d &apos;0-9&apos;
+3、取补集，留下空格和数字、换行：
+    echo &quot;hello 123 world 567!&quot; | tr -d -c &apos;0-9 \n&apos;
+4、压缩空格和数字：
+    echo &quot;hello    1233334  world!&quot; | tr -s &apos; 0-9&apos;
+</code></pre><h3 id="chattr"><a href="#chattr" class="headerlink" title="chattr"></a>chattr</h3><pre><code>能够将文件设置成不可修改。
+1、设置文件不可修改
+    chattr +i file
+2、去除文件不可修改属性
+    chattr -i file
+</code></pre><h3 id="diff、patch"><a href="#diff、patch" class="headerlink" title="diff、patch"></a>diff、patch</h3><pre><code>1、打patch
+    diff -u file1 file2 &gt; patch.patch
+2、patch还原
+    patch -p1 file2 &lt; patch.patch
+</code></pre><h3 id="alias"><a href="#alias" class="headerlink" title="alias"></a>alias</h3><pre><code>1、命名别名
+    alias new_command=&apos;command sequence&apos;
+2、把别名初始化有效
+    echo &apos;&apos; &gt;&gt; ~/.bashrc
+    source ~/.bashrc
+</code></pre><h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><pre><code>1、在文件下搜索字段：
     grep &quot;pattern&quot; filename
 2、匹配特殊的某些字段：
        grep -E &quot;[a-z]+&quot; filename
@@ -134,20 +134,20 @@
     grep match_pattern filename -A 3
 8、打印匹配文本之前的N行
     grep match_pattern filename -B 3
-</code></pre><h1 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h1><p>​    文本按列进行切割</p>
-<h1 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h1><pre><code>1、字符串替换，替换的是stdin里流
+</code></pre><h3 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h3><p>​    文本按列进行切割</p>
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><pre><code>1、字符串替换，替换的是stdin里流
     sed &apos;s/pattern/replace_string/&apos; filename
 2、替换文本里字符串
     sed -i &apos;s/pattern/replace_string/&apos; filename
 3、以上替换的第一处匹配内容，要替换文本里所有匹配字符串----&gt;为啥实验的时候不一样，2命令就全部替换了？
     sed -i &apos;s/pattern/replace_string/g&apos; filename    
-</code></pre><h1 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h1><pre><code>1、查看某个网段在用ip情况-alive,把信息导入文件查看较好，不然会有干扰
+</code></pre><h3 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h3><pre><code>1、查看某个网段在用ip情况-alive,把信息导入文件查看较好，不然会有干扰
     fping -g 172.18.34.1 172.18.34.254 -a &gt; 1.txt
 2、查看空闲ip-unreachable：
     fping -g 172.18.34.1 172.18.34.254 -u &gt; 1.txt
-</code></pre><h1 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h1><pre><code>查看远程主机哪些端口有打开：
+</code></pre><h3 id="nc"><a href="#nc" class="headerlink" title="nc"></a>nc</h3><pre><code>查看远程主机哪些端口有打开：
     nc -zv 172.18.34.43 1-65535 |&amp; grep succeeded
-</code></pre><h1 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h1><pre><code>$0     当前脚本的文件名
+</code></pre><h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><pre><code>$0     当前脚本的文件名
 $n     传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是1，第二个参数是2。
 $#     传递给脚本或函数的参数个数。
 $*     传递给脚本或函数的所有参数。
@@ -158,7 +158,7 @@ $$ 当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/09/shell命令小摘/" data-id="cju9sab7e0001isugcy3nwjpc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/09/shell命令小摘/" data-id="cju9sp77u0001ekugiq1d0su3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -204,7 +204,7 @@ $$ 当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/04/07/openstack-lbaas/" data-id="cju9sab5d0000isug2aqjbx4v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/04/07/openstack-lbaas/" data-id="cju9sp77w0002ekug6u90a2gv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +249,7 @@ $$ 当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/27/hello-world/" data-id="cju9sab7i0002isuggjbuiuxg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/03/27/hello-world/" data-id="cju9sp77p0000ekugm0qj6x9x" class="article-share-link">Share</a>
       
       
     </footer>
